@@ -3,7 +3,7 @@ require_relative('../models/address_book')
 RSpec.describe AddressBook do
   let(:book) {AddressBook.new}
 
-  def check_entry(entry,expected_name, expected_number, expected_email)
+  def check_entry(entry, expected_name, expected_number, expected_email)
     expect(entry.name).to eq expected_name
     expect(entry.phone_number).to eq expected_number
     expect(entry.email).to eq expected_email
@@ -74,21 +74,47 @@ RSpec.describe AddressBook do
       book.import_from_csv("entries.csv")
       entry_three = book.entries[2]
       check_entry(entry_three, "Joe", "555-555-3660", "joe@blocmail.com")
-
     end
 
     it "imports the 4th entry" do
       book.import_from_csv("entries.csv")
       entry_four = book.entries[3]
       check_entry(entry_four, "Sally", "555-555-4646", "sally@blocmail.com")
-
     end
 
     it "imports the 5th entry" do
       book.import_from_csv("entries.csv")
       entry_five = book.entries[4]
       check_entry(entry_five, "Sussie", "555-555-2036", "sussie@blocmail.com")
+    end
+  end
 
+  describe "#import_from_csv_2" do
+
+    it "imports a new datafile" do
+      book.import_from_csv("entries_2.csv")
+      expect(book.entries.size).to eq 3
+    end
+
+    it "imports the 1st NEW entry" do
+      book.import_from_csv("entries_2.csv")
+      entry_one = book.entries[0]
+      expect(entry_one.name).to eq "Christopher"
+      check_entry(entry_one, "Christopher","555-555-4854","christopher@blocmail.com")
+    end
+
+    it "imports the 2nd NEW entry" do
+      book.import_from_csv("entries_2.csv")
+      entry_two = book.entries[1]
+      expect(entry_two.name).to eq "Alex"
+      check_entry(entry_two, "Alex","555-555-5415","alex@blocmail.com")
+    end
+
+    it "imports the 3rd NEW entry" do
+      book.import_from_csv("entries_2.csv")
+      entry_three = book.entries[2]
+      expect(entry_three.name).to eq "Sebouh"
+      check_entry(entry_three, "Sebouh", "555-555-3660", "sebouh@blocmail.com")
     end
 
   end
