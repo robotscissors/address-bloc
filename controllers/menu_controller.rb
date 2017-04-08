@@ -45,6 +45,10 @@ class MenuController
       system "clear"
       puts "Good bye!\n"
       exit(0)
+    when 99
+      system "clear"
+      address_book.nuke puts "Deleted all entries"
+      main_menu
     else
       system "clear"
       puts "Sorry, that is not a valid input"
@@ -190,7 +194,7 @@ class MenuController
     file_name = gets.chomp
 
     if file_name.empty?
-      sytem "clear"
+      system "clear"
       puts "No CSV file read"
       main_menu
     end

@@ -60,4 +60,9 @@ class AddressBook
     return nil
   end
 
+  def nuke
+    entries.clear
+    return true if entries.empty?
+    nil
+  end
 end
