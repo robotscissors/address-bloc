@@ -99,15 +99,15 @@ RSpec.describe AddressBook do
     it "imports the 1st NEW entry" do
       book.import_from_csv("entries_2.csv")
       entry_one = book.entries[0]
-      expect(entry_one.name).to eq "Christopher"
-      check_entry(entry_one, "Christopher","555-555-4854","christopher@blocmail.com")
+      expect(entry_one.name).to eq "Alex"
+      check_entry(entry_one, "Alex","555-555-5415","alex@blocmail.com")
     end
 
     it "imports the 2nd NEW entry" do
       book.import_from_csv("entries_2.csv")
       entry_two = book.entries[1]
-      expect(entry_two.name).to eq "Alex"
-      check_entry(entry_two, "Alex","555-555-5415","alex@blocmail.com")
+      expect(entry_two.name).to eq "Christopher"
+      check_entry(entry_two, "Christopher","555-555-4854","christopher@blocmail.com")
     end
 
     it "imports the 3rd NEW entry" do
