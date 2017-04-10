@@ -47,7 +47,7 @@ class MenuController
       exit(0)
     when 99
       system "clear"
-      address_book.nuke puts "Deleted all entries"
+      puts "Deleted all entries" if address_book.nuke 
       main_menu
     else
       system "clear"
